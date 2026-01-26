@@ -1,0 +1,14 @@
+D:\STUDY\C#.NET\Heat Stroker\bin\Debug\net10.0\Heat Stroker.exe
+D:\STUDY\C#.NET\Heat Stroker\bin\Debug\net10.0\Heat Stroker.deps.json
+D:\STUDY\C#.NET\Heat Stroker\bin\Debug\net10.0\Heat Stroker.runtimeconfig.json
+D:\STUDY\C#.NET\Heat Stroker\bin\Debug\net10.0\Heat Stroker.dll
+D:\STUDY\C#.NET\Heat Stroker\bin\Debug\net10.0\Heat Stroker.pdb
+D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\Heat Stroker.GeneratedMSBuildEditorConfig.editorconfig
+D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\Heat Stroker.AssemblyInfoInputs.cache
+D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\Heat Stroker.AssemblyInfo.cs
+D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\Heat Stroker.csproj.CoreCompileInputs.cache
+D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\Heat Stroker.dll
+D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\refint\Heat Stroker.dll
+D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\Heat Stroker.pdb
+D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\Heat Stroker.genruntimeconfig.cache
+D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\ref\Heat Stroker.dll
