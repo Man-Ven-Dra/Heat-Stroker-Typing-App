@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Heat Stroker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a741888d19ac0214a44f8539133e61736aa04a53")]
 [assembly: System.Reflection.AssemblyProductAttribute("Heat Stroker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Heat Stroker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

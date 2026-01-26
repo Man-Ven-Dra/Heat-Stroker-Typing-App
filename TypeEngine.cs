@@ -172,8 +172,17 @@ class TypeEngine
         Stopwatch sw = Stopwatch.StartNew();
         while (sw.Elapsed<TimeSpan.FromSeconds(time) && typed.Length < paragraph.Length)
         {
-            Console.SetCursorPosition(0, 2);
+            Console.SetCursorPosition(0, 3);
             renderPara(paragraph, typed);
+
+            int remaining = time - (int)sw.Elapsed.TotalSeconds;
+            if (remaining < 0) remaining = 0;
+
+            Console.SetCursorPosition(0, 1);
+            Console.ForegroundColor=ConsoleColor.Yellow;
+            Console.Write($"Remaining Time: {remaining}s");
+            Console.ResetColor();
+
             Console.SetCursorPosition(typed.Length, 2);
 
             if (!Console.KeyAvailable)
@@ -196,7 +205,7 @@ class TypeEngine
 
         sw.Stop();
         Console.CursorVisible = true;
-        
+
         Console.ResetColor();
         Console.SetCursorPosition(0, 4);
         Console.WriteLine("\nTime UP!");

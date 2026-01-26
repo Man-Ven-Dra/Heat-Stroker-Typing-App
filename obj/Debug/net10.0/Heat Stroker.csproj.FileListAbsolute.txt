@@ -12,3 +12,4 @@ D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\refint\Heat Stroker.dll
 D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\Heat Stroker.pdb
 D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\Heat Stroker.genruntimeconfig.cache
 D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\ref\Heat Stroker.dll
+D:\STUDY\C#.NET\Heat Stroker\obj\Debug\net10.0\Heat Stroker.sourcelink.json
