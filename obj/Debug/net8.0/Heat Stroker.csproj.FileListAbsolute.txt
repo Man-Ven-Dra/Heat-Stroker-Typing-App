@@ -1,0 +1,14 @@
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\obj\Debug\net8.0\Heat Stroker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\obj\Debug\net8.0\Heat Stroker.AssemblyInfoInputs.cache
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\obj\Debug\net8.0\Heat Stroker.AssemblyInfo.cs
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\obj\Debug\net8.0\Heat Stroker.csproj.CoreCompileInputs.cache
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\bin\Debug\net8.0\Heat Stroker.exe
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\bin\Debug\net8.0\Heat Stroker.deps.json
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\bin\Debug\net8.0\Heat Stroker.runtimeconfig.json
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\bin\Debug\net8.0\Heat Stroker.dll
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\bin\Debug\net8.0\Heat Stroker.pdb
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\obj\Debug\net8.0\Heat Stroker.dll
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\obj\Debug\net8.0\refint\Heat Stroker.dll
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\obj\Debug\net8.0\Heat Stroker.pdb
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\obj\Debug\net8.0\Heat Stroker.genruntimeconfig.cache
+C:\Users\manvendra.chauhan\Desktop\New folder\Heat-Stroker-Typing-App-main\obj\Debug\net8.0\ref\Heat Stroker.dll

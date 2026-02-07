@@ -1,5 +1,7 @@
+using System;
 using System.Diagnostics;
 using System.Text;
+using System.Threading;
 
 class TypeEngine
 {
@@ -11,23 +13,22 @@ class TypeEngine
         Current
     }
 
-    internal CharState getCharState(int i, StringBuilder typed, string paragraph)
+    internal CharState GetCharState(int index, StringBuilder typed, string paragraph)
     {
-        if(i == typed.Length)
+        if (index == typed.Length)
             return CharState.Current;
 
-        if (i >= typed.Length)
+        if (index >= typed.Length)
             return CharState.NotTyped;
 
-        if(typed[i] == paragraph[i])
-        {
-            return CharState.Correct;
-        }
-        
-        return CharState.Incorrect;
-    }
+        if (index >= paragraph.Length)
+            return CharState.Incorrect;
 
-    internal void setColor(CharState state)
+        return typed[index] == paragraph[index]
+            ? CharState.Correct
+            : CharState.Incorrect;
+    }
+    internal void SetColor(CharState state)
     {
         switch (state)
         {
@@ -46,14 +47,15 @@ class TypeEngine
         }
     }
 
-    internal void renderPara(string paragraph, StringBuilder typed)
+    internal void RenderParagraph(string paragraph, StringBuilder typed)
     {
         for (int i = 0; i < paragraph.Length; i++)
         {
-            CharState state = getCharState(i, typed, paragraph);
-            setColor(state);
+            CharState state = GetCharState(i, typed, paragraph);
+            SetColor(state);
             Console.Write(paragraph[i]);
         }
+        Console.ResetColor();
     }
 
     static void RedrawTypedText(StringBuilder typed)
@@ -64,34 +66,40 @@ class TypeEngine
         Console.Write(typed);
     }
 
+
     internal void freeStyleParagraph()
     {
         Console.Clear();
+        Console.CursorVisible = false;
         Console.WriteLine("FREE STYLE PARAGRAPH\n");
 
-        string paragraph =
-            "Hello! Welcome to Heat Stroker, the ultimate Typing application, you are currently trying the Free Style Paragraph Mode.";
+       string paragraph = ParagraphGenerator.Generate(30);
 
         StringBuilder typed = new StringBuilder();
-
-        bool flag = false;
-
-        while (typed.Length < paragraph.Length)
+        bool timerStarted = false;
+        ConsoleKeyInfo key = new ConsoleKeyInfo();
+        while (key.Key != ConsoleKey.Enter)
         {
-            Console.SetCursorPosition(0, 2);
-            renderPara(paragraph, typed);
+            if (typed.Length > paragraph.Length - 10)
+{
+    paragraph += " " + ParagraphGenerator.Generate(20);
+}
 
-            ConsoleKeyInfo key = Console.ReadKey(true);
-            if (!flag)
+            Console.SetCursorPosition(0, 2);
+            RenderParagraph(paragraph, typed);
+
+            key = Console.ReadKey(true);
+
+            if (!timerStarted)
             {
-                flag=true;
+                timerStarted = true;
                 Timer.startWatch();
             }
 
             if (key.Key == ConsoleKey.Backspace)
             {
                 if (typed.Length > 0)
-                    typed.Remove(typed.Length - 1, 1);
+                    typed.Length--;
 
                 continue;
             }
@@ -99,9 +107,11 @@ class TypeEngine
             if (char.IsControl(key.KeyChar))
                 continue;
 
-            typed.Append(key.KeyChar);
+            if (typed.Length < paragraph.Length)
+                typed.Append(key.KeyChar);
         }
 
+        Console.CursorVisible = true;
         Console.ResetColor();
         Console.SetCursorPosition(0, 4);
         Console.WriteLine("\nCompleted!");
@@ -114,6 +124,7 @@ class TypeEngine
     internal void freeStyleNoParagraph()
     {
         Console.Clear();
+        Console.CursorVisible = true;
         Console.WriteLine("FREE STYLE NO PARAGRAPH\n");
         Console.WriteLine("Press ENTER to stop typing!");
 
@@ -158,61 +169,64 @@ class TypeEngine
         Result.wpmCalculator(sw, typed);
     }
 
-    internal void timeBasedParagraph(int time)
+    internal void timeBasedParagraph(int timeSeconds)
+{
+    Console.Clear();
+    Console.CursorVisible = false;
+    Console.WriteLine("TIME BASED PARAGRAPH\n");
+
+    string paragraph = ParagraphGenerator.Generate(30);
+
+    StringBuilder typed = new StringBuilder();
+    Stopwatch sw = Stopwatch.StartNew();
+
+    while (sw.Elapsed < TimeSpan.FromSeconds(timeSeconds))
     {
-        Console.Clear();
-        Console.CursorVisible = false;
-        Console.WriteLine("TIME BASED PARAGRAPH\n");
-
-        string paragraph =
-            "Hello! Welcome to Heat Stroker, the ultimate Typing application, you are currently trying the Free Style Paragraph Mode.";
-
-        StringBuilder typed = new StringBuilder();
-
-        Stopwatch sw = Stopwatch.StartNew();
-        while (sw.Elapsed<TimeSpan.FromSeconds(time) && typed.Length < paragraph.Length)
+        if (typed.Length > paragraph.Length - 10)
         {
-            Console.SetCursorPosition(0, 3);
-            renderPara(paragraph, typed);
+            paragraph += " " + ParagraphGenerator.Generate(20);
+        }
 
-            int remaining = time - (int)sw.Elapsed.TotalSeconds;
-            if (remaining < 0) remaining = 0;
+        Console.SetCursorPosition(0, 3);
+        RenderParagraph(paragraph, typed);
 
-            Console.SetCursorPosition(0, 1);
-            Console.ForegroundColor=ConsoleColor.Yellow;
-            Console.Write($"Remaining Time: {remaining}s");
-            Console.ResetColor();
+        int remaining = timeSeconds - (int)sw.Elapsed.TotalSeconds;
+        if (remaining < 0) remaining = 0;
 
-            Console.SetCursorPosition(typed.Length, 2);
+        Console.SetCursorPosition(0, 1);
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.Write($"Remaining Time: {remaining}s   ");
+        Console.ResetColor();
 
-            if (!Console.KeyAvailable)
-                continue;
+        if (Console.KeyAvailable)
+        {
             ConsoleKeyInfo key = Console.ReadKey(true);
 
             if (key.Key == ConsoleKey.Backspace)
             {
                 if (typed.Length > 0)
-                    typed.Remove(typed.Length - 1, 1);
-
-                continue;
+                    typed.Length--;
             }
-
-            if (char.IsControl(key.KeyChar))
-                continue;
-
-            typed.Append(key.KeyChar);
+            else if (!char.IsControl(key.KeyChar))
+            {
+                typed.Append(key.KeyChar);
+            }
         }
-
-        sw.Stop();
-        Console.CursorVisible = true;
-
-        Console.ResetColor();
-        Console.SetCursorPosition(0, 4);
-        Console.WriteLine("\nTime UP!");
-
-        Result.wpmCalculator(sw, typed);
-        Result.accuracyCalculator(typed, paragraph);
+        else
+        {
+            Thread.Sleep(10);
+        }
     }
+
+    sw.Stop();
+    Console.CursorVisible = true;
+
+    Console.ResetColor();
+    Console.SetCursorPosition(0, 5);
+    Console.WriteLine("\nTime UP!");
+
+    Result.wpmCalculator(sw, typed);
+    Result.accuracyCalculator(typed, paragraph);
 }
 
-    
+}
